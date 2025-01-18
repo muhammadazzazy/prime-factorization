@@ -1,5 +1,5 @@
 # Prime Factorization
-This is a Python implementation for a program that takes a natural number (positive integer) and displays its prime factors.
+This is a Python implementation for a program that takes a natural number (positive integer) and displays its prime factors. User input is validated, which avoids Python's ValueError no matter what the user provides.
 
 This program requires Python 3 which can be installed from [here](https://www.python.org/downloads/).
 
