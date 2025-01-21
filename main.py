@@ -1,39 +1,31 @@
 from sympy import isprime
+from sys import exit
 
-print('This program finds all the prime factors of a number!')
+print('Welcome to The Prime Factorizer!')
 
-prompt: str = 'Enter a number: '
-user_input: str = input(prompt)
+while True:
+    user_input: str = input('Enter a number: ')
 
-if user_input.isnumeric():
-    number: int = int(user_input)
-    while number <= 0:
-        user_input = input(prompt)
-        if user_input.isnumeric():
-            number = int(user_input)
-        else:
-            break
+    if user_input == 'exit':
+        print('Thanks for trying my program!')
+        exit()
 
-while not user_input.isnumeric():
-    user_input = input(prompt)
-    if user_input.isnumeric():
+    if not user_input.isnumeric():
+        print('Enter a whole number!')
+        continue
+
+    else:
         number: int = int(user_input)
-        while number <= 0:
-            user_input = input(prompt)
-            if user_input.isnumeric():
-                number = int(user_input)
-            else:
-                break
-
-prime_factors = [i for i in range(number) if isprime(i) and number % i == 0]
-
-if prime_factors != []:
-    output: str = f'The prime factors of {number} are '
-    for prime_factor in prime_factors:
-        if prime_factors.index(prime_factor) != len(prime_factors)-1:
-            output += (str(prime_factor) + ', ')
+        prime_factors = [i for i in range(number+1) if isprime(i) and number % i == 0]
+        if prime_factors != [] and len(prime_factors) > 1:
+            output: str = f'The prime factors of {number} are '
+            for prime_factor in prime_factors:
+                if prime_factors.index(prime_factor) != len(prime_factors)-1:
+                    output += (str(prime_factor) + ', ')
+                else:
+                    output += (str(prime_factor) + '.')
+            print(output)
+        elif len(prime_factors) == 1:
+            print(f'The only prime factor of {number} is {prime_factors[-1]}.')
         else:
-            output += (str(prime_factor) + '.')
-    print(output)
-else:
-    print(f'{number} has no prime factors!')
+            print(f'{number} has no prime factors!')
